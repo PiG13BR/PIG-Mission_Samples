@@ -1,0 +1,168 @@
+// ====================== Mission information =====================>
+author = "PIG13BR"; // Mission author's name. The default loading screen shows this string below the onLoadName in a smaller font prefixed by "by "
+onLoadName = "Operação Corredor Livre"; // String (usually mission name) shown during mission loading. The string is shown in a slightly larger font above the loadScreen. The onLoadMission text is placed below the load screen and the header gameType determines the game type on top of the box.
+onLoadMission = "Produção Oficial de PiG13BR"; // Displays a message while the mission is loading
+loadScreen = ""; // The picture to be shown while the mission is loaded. The path is relative to the mission folder. Must be in PAA file format. 2:1 aspect ratio (different aspect are rendered correctly as well, but won't cover the whole area). Ideally 1024x512 pixels.
+OnLoadIntro = "SPTS"; // Displays a message while the intro is loading
+onLoadMissionTime = 0; // Define whether you will see the time and date displayed while the mission loads
+onLoadIntroTime = 0; // Define whether you will see the time and date displayed while the intro loads
+briefingName = "Operação Corredor Livre"; // Mission name displayed in the mission selection menu.
+overviewPicture = "images\main.jpg"; // Path to image which will be displayed when the mission is highlighted on the mission selection screen. Image should be .paa format and in 2:1 aspect ratio – ideally 1024x512 (Arma 3).
+overviewText= ""; // Text to be displayed below the overviewPicture on the mission selection screen when the mission is available to play.
+overviewTextLocked = ""; // Text to be displayed below the overviewPicture on the mission selection screen when the mission is locked from play.
+
+// ====================== Header =====================>
+class Header
+{
+	gameType =  Coop;	// Game type
+	minPlayers =  1;	// minimum number of players the mission supports
+	maxPlayers = 4;	// maximum number of players the mission supports
+};
+
+// ====================== Respawn & AI =====================>
+// Enable or disable the respawn button in the menu for INSTANT and BASE respawn types.
+respawnButton = 1;
+
+// Templates are pre-defined scripts called when player dies and respawns. They are defined in an array and can be combined together.
+// List of pre-defined variants: https://community.bistudio.com/wiki/Arma_3_Respawn#Official_Templates
+respawnTemplates[] = {};
+
+// Additionally, you can define side specific templates. When a side has no unique templates, it will use general respawnTemplates instead.
+// respawnTemplatesWest[] = {"MenuInventory"};
+// respawnTemplatesEast[] = {"Counter"};
+// respawnTemplatesGuer[] = {"Tickets"};
+// respawnTemplatesCiv[] = {"Spectator"};
+// respawnTemplatesVirtual[] = {};
+
+// Type of Respawn (Default 0 in SP, 1 in MP)
+// 0    "NONE"      No respawn
+// 1    "BIRD"      Respawn as a seagull
+// 2    "INSTANT"   Respawn just where you died.
+// 3    "BASE"      Respawn in base. A respawn marker is needed.
+// 4    "GROUP"     Respawn in your group. If there is no remaining AI, you will become a seagull.
+// 5    "SIDE"      Introduced with Armed Assault version 1.08 Respawn into an AI unit on your side (if there's no AI left, you'll become a seagull).
+respawn = 3;
+
+// Set respawn delay in seconds.
+respawndelay = 10;
+
+// Show the scoreboard and respawn countdown timer for a player if he is killed with respawn type BASE.
+respawnDialog = 0;
+
+// Respawn player when he joins the game. Available only for INSTANT and BASE respawn types. (Default: 0)
+// -1 - Dont respawn on start. Don't run respawn script on start.
+//  0 - Dont respawn on start. Run respawn script on start.
+//  1 - Respawn on start. Run respawn script on start.
+respawnOnStart = 0;
+
+// ====================== Corpse & Wreck Management =====================>
+// This section explains how to use game-included garbage collector (GC) for better performances.
+// See also addToRemainsCollector, isInRemainsCollector and removeFromRemainsCollector commands.
+corpseManagerMode = 2; // Sets the mode for corpse removal manager. Default: 0 for SP, 2 for MP. // 0 = None - None of the units are managed by the manager, 1 = All - All units are managed by the manager, 2 = None_But_Respawned - Only units that can respawn are managed by the manager, 3 = All_But_Respawned - All units are managed by the manager with exception of respawned (opposite to mode 2).
+corpseLimit = 20; // Corpse limit before which ( <= ) corpseRemovalMaxTime applies and after which ( > ) corpseRemovalMinTime applies. // Default: 15.
+corpseRemovalMinTime = 120; // Remove all bodies that have been dead longer than corpseRemovalMinTime when corpseLimit is reached. // Seconds. Default: 10; 
+corpseRemovalMaxTime = 500; // Maximum time a corpse can remain on the ground if total number of corpses is equal or under corpseLimit. // Seconds. Default: 3600.
+wreckManagerMode = 0; // Sets the mode for wreck removal manager. // Default: 0 for SP, 2 for MP. // 0 = None - None of the vehicles are managed by the manager, 1 = All - All vehicles are managed by the manager, 2 = None_But_Respawned - Only vehicles that can respawn are managed by the manager, 3 = All_But_Respawned - All vehicles are managed by the manager with exception of respawned (opposite to mode 2)
+wreckLimit = 4; // Vehicle wreck limit before which ( <= ) wreckRemovalMaxTime applies and after which ( > ) wreckRemovalMinTime applies. // Seconds. Default: 15
+wreckRemovalMinTime = 60; // Remove all wrecks that have existed longer than wreckRemovalMinTime when wreckLimit is breached // Seconds. Default: 10
+wreckRemovalMaxTime = 1800; // Maximum time a wreck can remain on the ground if total number of wrecks is equal or under wreckLimit // Seconds. Default: 36000 (10 hours).
+minPlayerDistance = 100; // The minimum distance between corpse or wreck and nearest player before the corpse or wreck is allowed to be removed by the garbage collector // meters. Default: 0.
+
+// ====================== Misson Setting =====================>
+AIkills = 0; // Enables AI units score to appear in score table.
+disabledAI = 1; // Units which have been defined as playable will not be present as AI units in the game.
+
+
+// ====================== Server Security =====================>
+// https://community.bistudio.com/wiki/Description.ext#Server_Security
+
+// ====================== Tasks =====================>
+taskManagement_markers2D = 0; // Use new 2D markers.
+taskManagement_markers3D = 0; // Use new 3D markers.
+
+// ====================== Enable Debug Console =====================>
+enableDebugConsole = 1;
+
+class CfgRespawnTemplates {
+
+};
+
+class CfgFunctions
+{
+	class KPLIB
+	{
+		class inventory
+        {
+            file = "functions\inventory";
+
+            class crawlAllItems {};
+            class checkGear {};
+            class checkWeaponCargo {};
+            class getWeaponComponents {};
+            class isRadio {};
+			class initArsenal {};
+        }
+	}
+    class PIG
+	{
+        class actions
+        {
+            file = "functions\actions";
+
+            class addActionPlayers {};
+        };
+        class respawn
+        {
+            file = "functions\respawn";
+
+            class respawnManager {};
+        };
+        class misc 
+        {
+            file = "functions\misc";
+            
+            class milTraffic {};
+            class aceCheckUnitUnconscious {};
+            class addEventHandlers {};
+            class detectedTimer {};
+			class addFlashlight {};
+			class heliDropTroops {};
+        };
+	}
+};
+
+#include "ui\defines.hpp"
+import RscTitle;
+#include "ui\titles.hpp"
+#include "ui\menu_respawn.hpp"
+
+class CfgDebriefing
+{
+	class End_win
+	{
+		title = "Missão Completa";
+		subtitle = "";
+		description = "Sua equipe destruiu os sistemas anti-aéreos inimigo e conseguiu sair da AO";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = { 0.0, 0.3, 0.6, 1 };
+	};
+    class End_fail
+	{
+		title = "Missão Abortada";
+		subtitle = "";
+		description = "Sua equipe foi descoberta pelos inimigos antes de chegar na Colina 108";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = { 0.6, 0.1, 0.2, 1 };
+	};
+    class loser
+	{
+		title = "Todos os jogadores morreram!";
+		subtitle = "";
+		description = "";
+		pictureBackground = "";
+		picture = "KIA";
+		pictureColor[] = { 0.6, 0.1, 0.2, 1 };
+	};
+};
