@@ -10,7 +10,7 @@
 
 ### Features
 - Custom Respawn Screen for players. The first spawn is on the USS Liberty. After reaching the first objective, the players in the AO become spawn points for dead players.
-- Arsenal whitelist **BY ROLE**.
+- Arsenal whitelist **BY ROLE**. It uses some required functions from [KP Liberation](https://github.com/KillahPotatoes/KP-Liberation).
 - In some events, AI uses [lambs_danger waypoints](https://github.com/nk3nny/LambsDanger/wiki/waypoints) to track/hunt down players.
 - The enemies will react to shoots (EH FiredMan) if they're nearby, and they will get closer to the location to investigate.
 - QRF:
