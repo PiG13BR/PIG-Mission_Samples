@@ -6,7 +6,7 @@
   - c. Lase and destroy enemy SAM targets using VLS from USS Liberty.
   - d. Exfiltrate.
 - Coop Mission. Optimal for 4 players.
-- [REQUIRED MODS]()
+- [REQUIRED MODS](https://github.com/PiG13BR/PIG-Mission_Samples/blob/main/OP_CORREDOR.Altis/OP_CORREDOR.html)
 
 ### Features
 - Custom Respawn Screen for players. The first spawn is on the USS Liberty. After reaching the first objective, the players in the AO become spawn points for dead players.
