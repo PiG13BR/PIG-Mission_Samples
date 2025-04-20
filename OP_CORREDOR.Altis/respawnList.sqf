@@ -13,7 +13,7 @@ if (!task00_completed) then {
 } else {
 	_humanRP = [];
 	// After reaching the beach, uss liberty rp will became unavailable. Only human rp in the AO.
-	_humanRP = (units groupPlayers) select {(vehicle _x == _x) && {_x inArea trigger_AO} && {(alive _x) || {!([_x] call PIG_fnc_aceCheckUnitUnconscious)}}};
+	_humanRP = (units groupPlayers) select {(vehicle _x == _x) && {_x inArea trigger_AO} && {(alive _x) || {!([_x] call ace_common_fnc_isAwake)}}};
 	if (count _humanRP == 0) exitWith {_respawnList = []};
 	_respawnList = [
 		// At start, spawning in the uss liberty is posible
