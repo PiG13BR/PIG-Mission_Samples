@@ -100,7 +100,7 @@ class CfgFunctions
             class checkWeaponCargo {};
             class getWeaponComponents {};
             class isRadio {};
-			class initArsenal {};
+	    class initArsenal {};
         }
 	}
     class PIG
@@ -116,17 +116,17 @@ class CfgFunctions
             file = "functions\respawn";
 
             class respawnManager {};
+	    class updateRespawnList {};
         };
         class misc 
         {
             file = "functions\misc";
             
             class milTraffic {};
-            class aceCheckUnitUnconscious {};
             class addEventHandlers {};
             class detectedTimer {};
-			class addFlashlight {};
-			class heliDropTroops {};
+	    class addFlashlight {};
+	    class heliDropTroops {};
         };
 	}
 };
