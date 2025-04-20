@@ -6,14 +6,14 @@ missionConfigFile >> "PiG_RscRespawnMenu"
 
 class PiG_RscRespawnMenu
 {
-	idd = 6666;
+	idd = 5959;
 	movingEnable = false;
     controlsBackground[] = {};
 	class controls
 	{
 		class baseFrame: RscFrame
 		{
-			idc = 1800;
+			idc = -1;
 			style = ST_BACKGROUND;
 
 			x = 0.381917 * safezoneW + safezoneX;
@@ -24,14 +24,14 @@ class PiG_RscRespawnMenu
 		};
 		class buttonRespawn: RscButton
 		{
-			idc = 1600;
-			action = "deploy = 1;";
+			idc = 591600;
+			action = "";
 			colorDisabled[] = COLOR_LIGHTGRAY_ALPHA;
 			colorBackgroundDisabled[] = COLOR_LIGHTGRAY_ALPHA;
 			colorBackgroundActive[] = COLOR_BROWN;
 			colorFocused[] = COLOR_LIGHTGRAY_ALPHA;
 
-			text = "Deploy";
+			text = $STR_RESPAWN_MENU_DEPLOY;
 			x = 0.460639 * safezoneW + safezoneX;
 			y = 0.373972 * safezoneH + safezoneY;
 			w = 0.0918423 * safezoneW;
@@ -40,9 +40,9 @@ class PiG_RscRespawnMenu
 		};
 		class textMenu: RscText
 		{
-			idc = 1000;
+			idc = -1;
 
-			text = "Respawn Menu";
+			text = $STR_RESPAWN_MENU_TITLE;
 			x = 0.447519 * safezoneW + safezoneX;
 			y = 0.233941 * safezoneH + safezoneY;
 			w = 0.118083 * safezoneW;
@@ -51,26 +51,28 @@ class PiG_RscRespawnMenu
 		};
 		class textSelect: RscText
 		{
-			idc = 1001;
+			idc = -1;
 
-			text = "Selecionar Posição:";
+			text = $STR_RESPAWN_MENU_SELECT;
 			x = 0.395037 * safezoneW + safezoneX;
 			y = 0.303956 * safezoneH + safezoneY;
 			w = 0.216486 * safezoneW;
 			h = 0.0280062 * safezoneH;
+			sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
 		class listBoxRespawn: RscListBox
 		{
-			idc = 2100;
+			idc = 592100;
 
 			x = 0.48688 * safezoneW + safezoneX;
 			y = 0.27595 * safezoneH + safezoneY;
 			w = 0.124643 * safezoneW;
 			h = 0.0840187 * safezoneH;
 
-			class ComboScrollBar
+			class ListScrollBar
 			{
 				color[] = {1,1,1,1};
+				autoScrollEnabled = 1;
 				colorActive[] = {1,1,1,1};
 				colorDisabled[] = {1,1,1,0.3};
 				thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
@@ -81,7 +83,6 @@ class PiG_RscRespawnMenu
 				scrollSpeed = 0.06;
 				width = 0;
 				height = 0;
-				autoScrollEnabled = 0;
 				autoScrollSpeed = -1;
 				autoScrollDelay = 5;
 				autoScrollRewind = 0;
