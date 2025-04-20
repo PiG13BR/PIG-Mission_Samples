@@ -4,7 +4,7 @@ params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 waitUntil {!isNil "task00_completed"};
 
 // respawned = 1;
-[] call PIG_fnc_respawnManager;
+[_newUnit, 100, east] call PIG_fnc_respawnManager;
 
 // When respawn, call the addAction for the players
 [_newUnit] call PIG_fnc_addActionPlayers;
